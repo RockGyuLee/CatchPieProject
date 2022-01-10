@@ -1,0 +1,6 @@
+module Pods_catchPieProject {
+  umbrella header "Pods-catchPieProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
