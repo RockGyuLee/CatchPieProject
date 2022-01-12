@@ -8,15 +8,15 @@ const MoNoText = styled(Text)`
     ${[t.fontMono]}
 `
 
-const HText = styled(MoNoText)`
+export const HText = styled(MoNoText)`
     ${[t.textXl, t.mT2, t.mB1, t.fontBold]}
 `
 
-const SText = styled(MoNoText)`
+export const SText = styled(MoNoText)`
     ${[t.textBase,]}
 `
 
-const RowView = styled(View)`
+export const RowView = styled(View)`
     ${[t.mT1, t.flexRow, t.itemsCenter,t.contentCenter, t.pL5]}
 `
 

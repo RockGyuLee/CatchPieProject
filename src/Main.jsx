@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { ScrollView } from 'react-native';
 // import styled from 'styled-components';
 import SQLite from 'react-native-sqlite-storage';
@@ -10,21 +10,27 @@ SQLite.DEBUG(true);
 
 function MainView(){
     const count = [1,2,3,4,5,6,7,8];
-    // const [db, setDB] = useState(null);
+    const [data, setData] = useState(null);
 
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         var db = SQLite.openDatabase({name : "catchPieDB.db",createFromLocation: 1});
         console.log("db",db)
         db.transaction(tx => {
             tx.executeSql('SELECT * FROM catchPie', [], (ttx, results)=>{
-                let len = results.rows.length;
-                for (let i = 0; i < len; i++) {
-                    let row = results.rows.item(i);
-                    console.log("item", row);
-                }
+                setData(results);
+                // let len = results.rows.length;
+                // for (let i = 0; i < len; i++) {
+                //     let row = results.rows.item(i);
+                //     console.log("item", row);
+                // }
             })
         })
+        return ()=>{
+            db.close()
+        }
     }, [])
+
+    console.log("data",data);
 
     return (
         <ScrollView>

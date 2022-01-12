@@ -244,6 +244,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>react-native-image-picker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>react-native-sqlite-storage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
