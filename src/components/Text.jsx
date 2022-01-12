@@ -5,7 +5,7 @@ import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const MoNoText = styled(Text)`
-    ${[t.fontMono]}
+    ${[t.fontMono, t.textBlack	]}
 `
 
 const HText = styled(MoNoText)`
@@ -37,11 +37,11 @@ export function InfoText({id, pw}){
     return (
         <View>
             <RowView>
-                <Icon name={"wifi"} size={30}/>
+                <Icon name={"wifi"} size={30} color={'#000'}/>
                 <SText style={[t.pL5]} selectable={true}>{id}</SText>
             </RowView>
             <RowView style={[t.mT1, t.flexRow, t.itemsCenter]}>
-                <Icon name={"lock1"} size={30}/>
+                <Icon name={"lock1"} size={30} color={'#000'}/>
                 <SText style={[t.pL5]} selectable={true}>{pw}</SText>
             </RowView>
         </View>
