@@ -18,7 +18,9 @@ const RigthIcon = styled(Icon)`
     ${[ t.absolute, t.right0, t.bottom0, t.mR3, t.mB3]};
 `
 
-function MView(props){
+function MView({ data, ...props}){
+
+    const {title, wifiName, wifiPw } = data;
 
     const defaultH = t.h32['height'];
     const increaseH = t.h64['height']
@@ -90,13 +92,11 @@ function MView(props){
                 elevation: 3,
             },
           })}} onPress={changeCardState}>
-                <Header title={header}/>
-                <InfoText id={wifiId} pw={password}/>
-                {/* <RigthIcon onPress={changeCardState}> */}
+                <Header title={title}/>
+                <InfoText id={wifiName} pw={wifiPw}/>
                     <RigthIcon key={Math.random()} name={
                         isOpenCard ? "keyboard-arrow-up" : "keyboard-arrow-down"
                     } size={24} />
-                {/* </RigthIcon> */}
                 <Animated.View style={{opacity : fadeAnim}}>
                     <Text>test</Text>
                 </Animated.View>

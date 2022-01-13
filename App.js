@@ -1,18 +1,40 @@
-import React, { useState, useCallback } from 'react';
-import { StyleSheet, SafeAreaView, View, Text, Button } from 'react-native';
-import Icon from 'react-native-vector-icons/Fontisto';
+import React, { useState, useCallback, useLayoutEffect } from 'react';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import Modal from "react-native-modal";
+import SQLite from 'react-native-sqlite-storage';
 import * as ImagePicker from 'react-native-image-picker';
-
 // modules
 import MainView from './src/Main';
 import { CirecleBtn } from './src/components/Button';
 import ImageModal from './src/components/Modal';
 
+
+SQLite.DEBUG(true);
+
 export default function App() {
 
   const [pickerResponse, setPickerResponse] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
+
+  const [data, setData] = useState(null);
+
+  useLayoutEffect(()=>{
+      var db = SQLite.openDatabase({name : "catchPieDB.db",createFromLocation: 1});
+      db.transaction(tx => {
+          tx.executeSql('SELECT * FROM catchPie', [], (ttx, results)=>{
+              setData(results);
+              // let len = results.rows.length;
+              // for (let i = 0; i < len; i++) {
+              //     let row = results.rows.item(i);
+              //     console.log("item", row);
+              // }
+          })
+      })
+      return ()=>{
+          db.close()
+      }
+  }, [])
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -36,13 +58,14 @@ export default function App() {
     ImagePicker.launchImageLibrary(options, setPickerResponse);
   }, []);
 
-  console.log("picker",pickerResponse)
 
   return (
     <SafeAreaView style={styles.container}>
-      <MainView />
+      {
+        data && <MainView data={data}/>
+      }
       <CirecleBtn  onPress={toggleModal}>
-        <Icon name="camera" color="white" size={20}/>
+        <Icon name="plus" color="white" size={25}/>
       </CirecleBtn>
       <Modal isVisible={isModalVisible}>
         <ImageModal onPress={toggleModal}/>
