@@ -341,8 +341,22 @@ PODS:
     - React-jsi (= 0.66.4)
     - React-logger (= 0.66.4)
     - React-perflogger (= 0.66.4)
+  - RNImageCropPicker (0.37.2):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.37.2)
+    - TOCropViewController
+  - RNImageCropPicker/QBImagePickerController (0.37.2):
+    - React-Core
+    - React-RCTImage
+    - TOCropViewController
+  - RNTextDetector (0.0.6):
+    - React
+    - TesseractOCRiOS (~> 4.0.0)
   - RNVectorIcons (9.0.0):
     - React-Core
+  - TesseractOCRiOS (4.0.0)
+  - TOCropViewController (2.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -402,6 +416,8 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
+  - RNTextDetector (from `../node_modules/react-native-text-detector/ios`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -420,6 +436,8 @@ SPEC REPOS:
     - fmt
     - libevent
     - OpenSSL-Universal
+    - TesseractOCRiOS
+    - TOCropViewController
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -485,6 +503,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
+  RNTextDetector:
+    :path: "../node_modules/react-native-text-detector/ios"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -535,10 +557,14 @@ SPEC CHECKSUMS:
   React-RCTVibration: e3ffca672dd3772536cb844274094b0e2c31b187
   React-runtimeexecutor: dec32ee6f2e2a26e13e58152271535fadff5455a
   ReactCommon: 57b69f6383eafcbd7da625bfa6003810332313c4
+  RNImageCropPicker: 448d3c6e923fde3466b49caf3c2457c2a0ba02dd
+  RNTextDetector: bcbfed60c7d2a8f455314955a519fae6d5ab921a
   RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
+  TesseractOCRiOS: 90638afbe43d082433f2e76b384c7901d23956df
+  TOCropViewController: 3105367e808b7d3d886a74ff59bf4804e7d3ab38
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 1a19cb649c366a7b4639ad53d06fc86cbcd8fb9b
+PODFILE CHECKSUM: 2665a86846be771b19254421ac06ed592effc242
 
 COCOAPODS: 1.11.2

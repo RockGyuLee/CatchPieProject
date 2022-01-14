@@ -16,7 +16,6 @@ function MainView(props){
             {
                 count.map( (i, idx ) =>{
                     let { TITLE, WIFI_NAME, WIFI_PW} = rows.item(idx);
-                    console.log("Compo",TITLE, WIFI_NAME, WIFI_PW);
                     return (
                         <MView key={idx} idx={idx} data={{
                             title : TITLE,
