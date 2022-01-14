@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/Fontisto';
 import Material from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
-import RNTextDetector from "rn-text-detector";
 
 //modules
 import { SText } from "./Text";
@@ -53,17 +52,17 @@ function ImageModal(props){
           });
     };
 
-    detectText = async (pp) => {
-        let visionResp = [];
-        try {
-          visionResp = await RNTextDetector.detectFromUri(pp);
-          setTextAr(visionResp);
-        } catch (e) {
-          console.warn(e);
-        } finally {
-            console.log("vision",visionResp);
-        }
-      };
+    // detectText = async (pp) => {
+    //     let visionResp = [];
+    //     try {
+    //       visionResp = await RNTextDetector.detectFromUri(pp);
+    //       setTextAr(visionResp);
+    //     } catch (e) {
+    //       console.warn(e);
+    //     } finally {
+    //         console.log("vision",visionResp);
+    //     }
+    //   };
 
     console.log("textAr", textAr, this.camera)
     
