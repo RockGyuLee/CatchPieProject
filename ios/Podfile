@@ -16,8 +16,6 @@ target 'catchPieProject' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  pod 'RNTextDetector', path: '../node_modules/react-native-text-detector/ios'
-
   target 'catchPieProjectTests' do
     inherit! :complete
     # Pods for testing

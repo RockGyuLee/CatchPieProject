@@ -10,15 +10,14 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "jetifier": "^2.0.0",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-image-crop-picker": "^0.37.2",
-    "react-native-image-picker": "^4.7.0",
     "react-native-modal": "^13.0.0",
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-tailwindcss": "^1.1.11",
     "react-native-vector-icons": "^9.0.0",
-    "rn-text-detector": "^0.0.8",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

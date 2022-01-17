@@ -34,9 +34,6 @@ export default function App() {
     setModalVisible(!isModalVisible);
   };
 
-  
-
-
   return (
     <SafeAreaView style={styles.container}>
       {
@@ -46,7 +43,7 @@ export default function App() {
         <Icon name="plus" color="white" size={25}/>
       </CirecleBtn>
       <Modal isVisible={isModalVisible}>
-        <ImageModal onPress={toggleModal}/>
+        <ImageModal onPress={toggleModal} setVisible={setModalVisible}/>
       </Modal>
     </SafeAreaView>
   );
