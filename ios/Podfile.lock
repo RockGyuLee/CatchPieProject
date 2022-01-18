@@ -272,7 +272,7 @@ PODS:
   - React-jsinspector (0.66.4)
   - React-logger (0.66.4):
     - glog
-  - react-native-image-picker (4.7.0):
+  - react-native-netinfo (7.1.7):
     - React-Core
   - react-native-sqlite-storage (6.0.1):
     - React-Core
@@ -398,7 +398,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
-  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
+  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -469,8 +469,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
-  react-native-image-picker:
-    :path: "../node_modules/react-native-image-picker"
+  react-native-netinfo:
+    :path: "../node_modules/@react-native-community/netinfo"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
   React-perflogger:
@@ -535,7 +535,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 94ce921e1d8ce7023366873ec371f3441383b396
   React-jsinspector: d0374f7509d407d2264168b6d0fad0b54e300b85
   React-logger: 933f80c97c633ee8965d609876848148e3fef438
-  react-native-image-picker: 4b090b73077c3a71b91fddc739a594feebd00184
+  react-native-netinfo: 27f287f2d191693f3b9d01a4273137fcf91c3b5d
   react-native-sqlite-storage: f6d515e1c446d1e6d026aa5352908a25d4de3261
   React-perflogger: 93075d8931c32cd1fce8a98c15d2d5ccc4d891bd
   React-RCTActionSheet: 7d3041e6761b4f3044a37079ddcb156575fb6d89
@@ -555,6 +555,6 @@ SPEC CHECKSUMS:
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 1a19cb649c366a7b4639ad53d06fc86cbcd8fb9b
+PODFILE CHECKSUM: 78f5bd90e98f5f49cef07a1f954c7362e10000b7
 
 COCOAPODS: 1.11.2
