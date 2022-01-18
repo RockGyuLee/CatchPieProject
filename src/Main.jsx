@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { ScrollView } from 'react-native';
 // import styled from 'styled-components';
-import SQLite from 'react-native-sqlite-storage';
 
 //modules
 import MView from './components/View';
 
-SQLite.DEBUG(true);
 
+<<<<<<< HEAD
 function MainView(){
     const count = [1,2,3,4,5,6,7,8];
     const [data, setData] = useState(null);
@@ -29,6 +28,12 @@ function MainView(){
             db.close();
         }
     }, [])
+=======
+function MainView(props){
+    const { rows } = props.data;
+
+    const count = Array.from(Array(rows.length).keys());
+>>>>>>> master
 
     console.log("data",data);
 
@@ -36,12 +41,16 @@ function MainView(){
         <ScrollView>
             {
                 count.map( (i, idx ) =>{
+                    let { TITLE, WIFI_NAME, WIFI_PW} = rows.item(idx);
                     return (
-                        <MView key={idx} idx={idx}/>
+                        <MView key={idx} idx={idx} data={{
+                            title : TITLE,
+                            wifiName : WIFI_NAME,
+                            wifiPw : WIFI_PW
+                        }}/>
                     )
                 })
             }
-            {/* <MView /> */}
         </ScrollView>
     )
 }

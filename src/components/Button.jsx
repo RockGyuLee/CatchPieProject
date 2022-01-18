@@ -8,8 +8,13 @@ const CButton = styled(TouchableOpacity)`
 `
 
 export function CirecleBtn(props){
+
+    const handlePress = () => {
+        props.onPress && props.onPress();
+    }
+
     return (
-        <CButton style={{backgroundColor : '#b794f4',  }}>
+        <CButton style={{backgroundColor : '#b794f4',  }} onPress={handlePress}>
             {props.children}
         </CButton>
     )

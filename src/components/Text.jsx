@@ -8,15 +8,15 @@ const MoNoText = styled(Text)`
     ${[t.fontMono, t.textBlack	]}
 `
 
-const HText = styled(MoNoText)`
-    ${[t.textXl, t.mT2, t.mB1, t.fontBold]}
+export const HText = styled(MoNoText)`
+    ${[t.textXl, t.mT2, t.mB1, t.fontBold, t.textBlack	]}
 `
 
-const SText = styled(MoNoText)`
-    ${[t.textBase,]}
+export const SText = styled(MoNoText)`
+    ${[t.textBase, t.textBlack	]}
 `
 
-const RowView = styled(View)`
+export const RowView = styled(View)`
     ${[t.mT1, t.flexRow, t.itemsCenter,t.contentCenter, t.pL5]}
 `
 
@@ -37,11 +37,19 @@ export function InfoText({id, pw}){
     return (
         <View>
             <RowView>
+<<<<<<< HEAD
                 <Icon name={"wifi"} size={30} color={'#000'}/>
                 <SText style={[t.pL5]} selectable={true}>{id}</SText>
             </RowView>
             <RowView style={[t.mT1, t.flexRow, t.itemsCenter]}>
                 <Icon name={"lock1"} size={30} color={'#000'}/>
+=======
+                <Icon name={"wifi"} color={'#000'} size={30}/>
+                <SText style={[t.pL5]} selectable={true}>{id}</SText>
+            </RowView>
+            <RowView style={[t.mT1, t.flexRow, t.itemsCenter]}>
+                <Icon name={"lock1"} color={'#000'} size={30}/>
+>>>>>>> master
                 <SText style={[t.pL5]} selectable={true}>{pw}</SText>
             </RowView>
         </View>
