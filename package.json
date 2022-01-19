@@ -10,14 +10,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@openspacelabs/react-native-zoomable-view": "^2.0.0",
     "@react-native-community/netinfo": "^7.1.7",
     "jetifier": "^2.0.0",
     "react": "17.0.2",
     "react-native": "0.66.4",
+    "react-native-bouncy-checkbox": "^2.1.10",
     "react-native-image-crop-picker": "^0.37.2",
     "react-native-modal": "^13.0.0",
     "react-native-network-info": "^5.2.1",
-    "react-native-snap-carousel": "^3.9.1",
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-tailwindcss": "^1.1.11",
     "react-native-vector-icons": "^9.0.0",

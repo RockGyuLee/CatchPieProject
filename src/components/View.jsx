@@ -27,7 +27,7 @@ function MView({ data, ...props}){
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
-    // 카드의 열닫 상태
+    // 카드의 열고닫힌 상태
     const [isOpenCard, setIsOpenCard] = useState(false);
 
     // card의 dynamic size 변수

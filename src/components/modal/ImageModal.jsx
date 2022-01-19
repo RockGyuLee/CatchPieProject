@@ -1,17 +1,19 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, Fragment} from "react";
 import { TouchableOpacity, View, Button, Image, Text } from 'react-native';
 import {t} from 'react-native-tailwindcss';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/Fontisto';
 import Material from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-crop-picker';
+import Modal from "react-native-modal";
 
 //modules
-import { SText } from "./Text";
-import { fetchBody, API_URL, googleFetch } from "../googleKey";
+import { SText } from "../Text";
+import DetectModal from "./DetectModal";
+import {  API_URL } from "../../googlekey";
 
 const CategoryView = styled(View)`
-    ${[ t.relative, t.bottom0,  t.justifyEnd, t.bgWhite,]}
+    ${[ t.relative, t.bottom0,  t.justifyEnd, t.bgWhite]}
 `
 
 const RowView = styled(View)`
@@ -25,16 +27,19 @@ const ClickAbleView = styled(TouchableOpacity)`
 
 function ImageModal(props){
 
+    
     const [base64Image, setBase64Image ] = useState('');
+    const [ pathImage, setPathImage ] = useState('');
     const [convertImage2Text , setConvertImage2Text] = useState([]);
-
+    
+    const [ isDetect, setIsDetect] = useState(false);
 
     useEffect(()=>{
         if(base64Image == ''){
             return;
         }
 
-        callGoogleVIsionApi = async (base64) => {
+        let callGoogleVIsionApi = async (base64) => {
             await fetch(API_URL, {
               method: 'POST',
               body: JSON.stringify({
@@ -53,15 +58,16 @@ function ImageModal(props){
                 ],
               }),
             })
-              .then((res) => res.json())
-              .then((data) => {
-                  let str = data.responses[0].fullTextAnnotation.text;
-                  let splitStr = str.split(' ')
+            .then((res) => res.json())
+            .then((data) => {
+                let str = data.responses[0].fullTextAnnotation.text;
+                let splitStr = str.split(' ')
                 setConvertImage2Text(splitStr);
-              })
-              .catch((err) => console.log('error : ', err));
+                setIsDetect(true);
+            })
+            .catch((err) => console.log('error : ', err));
         };
-          callGoogleVIsionApi(base64Image)
+        callGoogleVIsionApi(base64Image)
         
     },[base64Image])
 
@@ -76,6 +82,7 @@ function ImageModal(props){
             cropping: true,
             includeBase64 : true
         }).then(image => {
+            setPathImage(image.path);
             setBase64Image(image.data)
         });
     };
@@ -85,11 +92,34 @@ function ImageModal(props){
             cropping : true,
             includeBase64 : true
         }).then(image => {
+            setPathImage(image.path);
             setBase64Image(image.data)
         });
     };
 
-    console.log("convertImage2Text",convertImage2Text)
+    const disableDetectModal = () => {
+        setIsDetect(false)
+    }
+
+    // if(isDetect){
+    //     return (
+    //         <Modal isVisible={isDetect}>
+    //             <DetectModal disableModal={disableDetectModal} image={pathImage} texts={convertImage2Text}/>
+    //             {/* <DetectModal disableModal={disableDetectModal} texts={["안녕하세요", "이것은 테스트입니다.","스크롤도 테스트해야합니다."]}/> */}
+    //         </Modal>
+    //     )
+    // }
+
+    // detect modal test 진행 
+    if(true){
+        return (
+            <Modal isVisible={true}>
+                <DetectModal texts={["안녕하세요", "이것은 테스트입니다.","스크롤도 테스트해야합니다.","스크롤 테스트 1"]} image={'https://reactnative.dev/img/tiny_logo.png'}/>
+            </Modal>
+        )
+    }
+
+    
     
     return(
         <CategoryView>
@@ -103,16 +133,6 @@ function ImageModal(props){
                     <SText>앨범</SText>
                 </ClickAbleView>
             </RowView>
-            {
-                // image && <Image style={{width : 100, height : 100}} source={{ uri : image}}/>
-                convertImage2Text.map( (item, idx) => {
-                    return (
-                        <Text key={idx}>
-                            {item}
-                        </Text>
-                    )
-                })
-            }
             <Button title="취소" onPress={toggleModal} />
         </CategoryView>
     )

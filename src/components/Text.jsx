@@ -13,7 +13,7 @@ export const HText = styled(MoNoText)`
 `
 
 export const SText = styled(MoNoText)`
-    ${[t.textBase, t.textBlack	]}
+    ${[ t.textBase, t.textBlack	]}
 `
 
 export const RowView = styled(View)`
