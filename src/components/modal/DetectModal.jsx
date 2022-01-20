@@ -36,7 +36,7 @@ const FlexRow = styled(View)`
     ${[t.p2, t.flexRow, t.itemsCenter,t.contentCenter, t.m2, t.roundedLg]}
 `
 
-function DetectModal({texts, disableModal, image}){
+function DetectModal({texts, disableModal, image, closeAllModal}){
 
     const [detectTexts, setDetectTexts ] = useState(texts);
     const [ title, setTitle] = useState(undefined);
@@ -56,8 +56,9 @@ function DetectModal({texts, disableModal, image}){
     }
 
     const insertWifiData = () => {
-        console.log("insertWifiData", title, pw)
-        if( !title || !pw ) Alert.alert("","제목과 패스워드의 입력을 확인해주세요.");
+        if( !detectTexts[title] || !detectTexts[pw] ){
+            return Alert.alert("","제목과 패스워드의 입력을 확인해주세요.");
+        }
 
         let db = SQLite.openDatabase({name : "catchPieDB.db",createFromLocation: 1});
         db.transaction( tx => {
@@ -66,6 +67,7 @@ function DetectModal({texts, disableModal, image}){
             tx.executeSql('Insert into catchPie (TITLE, WIFI_NAME, WIFI_PW ) VALUES (?,?,?)', ['',detectTexts[title],detectTexts[pw]], 
             (tx,results) => {
                 console.log("Results", results.rowsAffected);
+                closeAllModal();
             },(err) => {
                 console.error(err);
             })

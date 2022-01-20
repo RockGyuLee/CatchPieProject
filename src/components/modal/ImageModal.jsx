@@ -98,26 +98,30 @@ function ImageModal(props){
     };
 
     const disableDetectModal = () => {
-        setIsDetect(false)
+        setIsDetect(false);
     }
 
-    // if(isDetect){
-    //     return (
-    //         <Modal isVisible={isDetect}>
-    //             <DetectModal disableModal={disableDetectModal} image={pathImage} texts={convertImage2Text}/>
-    //             {/* <DetectModal disableModal={disableDetectModal} texts={["안녕하세요", "이것은 테스트입니다.","스크롤도 테스트해야합니다."]}/> */}
-    //         </Modal>
-    //     )
-    // }
+    const closeAllModal = () => {
+        setIsDetect(false);
+        props.onPress();
+    }
 
-    // detect modal test 진행 
-    if(true){
+    if(isDetect){
         return (
-            <Modal isVisible={true}>
-                <DetectModal texts={["안녕하세요", "이것은 테스트입니다.","스크롤도 테스트해야합니다.","스크롤 테스트 1"]} image={'https://reactnative.dev/img/tiny_logo.png'}/>
+            <Modal isVisible={isDetect}>
+                <DetectModal disableModal={disableDetectModal} closeAllModal={closeAllModal} image={pathImage} texts={convertImage2Text}/>
             </Modal>
         )
     }
+
+    // detect modal test 진행 
+    // if(true){
+    //     return (
+    //         <Modal isVisible={true}>
+    //             <DetectModal texts={["안녕하세요", "이것은 테스트입니다.","스크롤도 테스트해야합니다.","스크롤 테스트 1"]} image={'https://reactnative.dev/img/tiny_logo.png'}/>
+    //         </Modal>
+    //     )
+    // }
 
     
     
