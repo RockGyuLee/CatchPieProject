@@ -5,15 +5,15 @@ import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const MoNoText = styled(Text)`
-    ${[t.fontMono]}
+    ${[t.fontMono, t.textBlack	]}
 `
 
 export const HText = styled(MoNoText)`
-    ${[t.textXl, t.mT2, t.mB1, t.fontBold, t.textBlack	]}
+    ${[t.textXl, t.mT2, t.mB1, t.fontBold, 	]}
 `
 
 export const SText = styled(MoNoText)`
-    ${[ t.textBase, t.textBlack	]}
+    ${[ t.textBase,	]}
 `
 
 export const RowView = styled(View)`

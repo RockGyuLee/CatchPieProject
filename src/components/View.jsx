@@ -1,13 +1,13 @@
-import React, {useState, useLayoutEffect, useRef} from "react";
+import React, {useState, useLayoutEffect, useRef, useEffect} from "react";
 import {t} from 'react-native-tailwindcss';
 import styled from 'styled-components';
-import { View, TouchableOpacity, Text, Animated, Platform } from 'react-native';
+import { View, TouchableOpacity, Text, Animated, Platform, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 //modules
 import { Header, InfoText } from "./Text";
 
-const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
+const AnimatedTouchable = Animated.createAnimatedComponent(Pressable);
 
 const VerFlexView = styled(AnimatedTouchable)`
     background-color : #D8E5C4;
@@ -18,13 +18,15 @@ const RigthIcon = styled(Icon)`
     ${[ t.absolute, t.right0, t.bottom0, t.mR3, t.mB3]};
 `
 
-function MView({ data, ...props}){
+const defaultH = t.h32['height'];
+const increaseH = t.h64['height'];
+
+
+function MView({ data, update2Data, ...props}){
 
     const {title, wifiName, wifiPw } = data;
 
-    const defaultH = t.h32['height'];
-    const increaseH = t.h64['height']
-
+    
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
     // 카드의 열고닫힌 상태
@@ -32,7 +34,7 @@ function MView({ data, ...props}){
 
     // card의 dynamic size 변수
     const [size, ] = useState(new Animated.Value(defaultH))
-    
+
     useLayoutEffect(() => {
         if(isOpenCard){
             Animated.timing(
@@ -64,11 +66,15 @@ function MView({ data, ...props}){
             }).start();
         }
         
-    }, [isOpenCard])
+    }, [isOpenCard]);
     
     // 카드의 열림/닫힘 상태 변환 함수.
     const changeCardState = () => {
         setIsOpenCard(s => !s)
+    }
+
+    const onPressLong = () => {        
+        update2Data && update2Data();
     }
 
     return(
@@ -82,7 +88,7 @@ function MView({ data, ...props}){
             android: {
                 elevation: 3,
             },
-          })}} onPress={changeCardState}>
+          })}} onPress={changeCardState} onLongPress={onPressLong}>
                 <Header title={title}/>
                 <InfoText id={wifiName} pw={wifiPw}/>
                     <RigthIcon key={Math.random()} name={

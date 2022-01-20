@@ -17,6 +17,7 @@ SQLite.DEBUG(true);
 export default function App() {
 
   const [isModalVisible, setModalVisible] = useState(false);
+  const [ isUpdateState, setIsUpdateState] = useState(false);
 
   const [data, setData] = useState(null);
   PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
@@ -42,9 +43,24 @@ export default function App() {
     setModalVisible(!isModalVisible);
   };
 
+  const update2Data = () => {
+    setIsUpdateState(true)
+  }
+
+  const updateCatchData = () => {
+  }
+
+  if(isUpdateState){
+    return (
+      <SafeAreaView style={styles.container}>
+        { data && <MainView key={Math.random()} data={data} setting/>}
+      </SafeAreaView>
+    )
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      { data && <MainView data={data}/>}
+      { data && <MainView data={data} update2Data={update2Data}/>}
       <CirecleBtn  onPress={toggleModal}>
         <Icon name="plus" color="white" size={25}/>
       </CirecleBtn>
