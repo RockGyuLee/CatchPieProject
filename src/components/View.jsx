@@ -1,8 +1,9 @@
 import React, {useState, useLayoutEffect, useRef, useEffect} from "react";
 import {t} from 'react-native-tailwindcss';
 import styled from 'styled-components';
-import { View, TouchableOpacity, Text, Animated, Platform, Pressable } from 'react-native';
+import { Text, Animated, Platform, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import QRCode from "react-qr-code";
 
 //modules
 import { Header, InfoText } from "./Text";
@@ -22,11 +23,11 @@ const defaultH = t.h32['height'];
 const increaseH = t.h64['height'];
 
 
-function MView({ data, update2Data, ...props}){
+function MView({ data, update2Data, idx, ...props}){
 
     const {title, wifiName, wifiPw } = data;
 
-    
+
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
     // 카드의 열고닫힌 상태
@@ -74,7 +75,7 @@ function MView({ data, update2Data, ...props}){
     }
 
     const onPressLong = () => {        
-        update2Data && update2Data();
+        update2Data && update2Data(idx);
     }
 
     return(
@@ -94,8 +95,8 @@ function MView({ data, update2Data, ...props}){
                     <RigthIcon key={Math.random()} name={
                         isOpenCard ? "keyboard-arrow-up" : "keyboard-arrow-down"
                     } size={24} />
-                <Animated.View style={{opacity : fadeAnim}}>
-                    <Text>test</Text>
+                <Animated.View style={{ marginTop : '5%', opacity : fadeAnim, display : 'flex',alignItems : 'center', justifyContent : 'center'}}>
+                    <QRCode value={`WIFI:S:${wifiName};T:WPA;P:${wifiPw};;`} size={80}/>
                 </Animated.View>
         </VerFlexView>
     )

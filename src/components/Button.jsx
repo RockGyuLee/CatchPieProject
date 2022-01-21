@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, TouchableOpacity} from 'react-native';
+import {Button, TouchableOpacity, View} from 'react-native';
 import {t} from 'react-native-tailwindcss';
 import styled from 'styled-components';
 
@@ -8,7 +8,11 @@ const CButton = styled(TouchableOpacity)`
 `
 
 const DButton = styled(TouchableOpacity)`
-    ${[t.roundedLg, t.w20, t.h12, t.mB5, t.mR5 , t.itemsCenter, t.justifyCenter]}
+    ${[t.roundedLg, t.w16, t.h10, t.mB5, t.mR5 , t.itemsCenter, t.justifyCenter]}
+`
+
+const RowGroup = styled(View)`
+    ${[ t.flexRow, t.mT4 ]}
 `
 
 export function CirecleBtn(props){
@@ -34,5 +38,13 @@ export function DefaultBtn(props){
         <DButton style={{borderWidth : 2, borderColor : '#b794f4'}} onPress={handlePress}>
             {props.children}
         </DButton>
+    )
+}
+
+export function RowBtnGroup(props){
+    return(
+        <RowGroup>
+            {props.children}
+        </RowGroup>
     )
 }

@@ -52,6 +52,7 @@ function DetectModal({texts, disableModal, image, closeAllModal}){
     }
 
     const changeText = (idx, text) => {
+        console.log("text",text);
         setDetectTexts( (data)=> data.map( (t, iidx) => iidx == idx ? text : t) )
     }
 
@@ -93,8 +94,9 @@ function DetectModal({texts, disableModal, image, closeAllModal}){
                                 />
                                 <BouncyCheckbox key={Math.random()} rsize={25} isChecked={idx == pw ? true : false} onPress={pressPW.bind(null, idx)} iconComponent={
                                         <Material name="lock" />
-                                    }/>
-                                <TextInput style={{fontSize:18, padding: 10, width : "75%"}} defaultValue={text} onChangeText={changeText.bind(null, idx)}/>  
+                                    }
+                                />
+                                <TextInput style={{fontSize:18, padding: 10, width : "75%"}} defaultValue={text} onChangeText={changeText.bind(null, idx)}/>
                             </FlexRow>
                         ))
                     }

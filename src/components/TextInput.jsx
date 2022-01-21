@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 const MoNoText = styled(TextInput)`
     ${[t.fontMono ]}
-    borderBottomColor: #000000;
+    border-bottom-color: #000000;
 `
 
 const TextInputView = styled(View)`
@@ -25,28 +25,37 @@ export const HTextInput = styled(MoNoText)`
     ${[t.textXl, t.mT2, t.mB1, t.fontBold, t.textBlack	]}
 `
 
-export function HeaderInput({title}){
+export function HeaderInput({title, onChangeText}){
+
+    const changeText = (evt) => {
+        onChangeText && onChangeText(evt);
+    }
+
     return (
         <TextInputView>
-            <HTextInput>{title}</HTextInput>
+            <HTextInput defaultValue={title} onChangeText={changeText} />
         </TextInputView>
     )
 }
 
-export function InfoTextInput({id, pw}){
+export function InfoTextInput({id, pw, onChangeText}){
+
+    const changeText = (updateCase, evt) => {
+        onChangeText && onChangeText(updateCase, evt);
+    }
 
     return (
         <View>
-            <RowView>
+            <RowView >
                 <Icon name={"wifi"} color={'#000'} size={30}/>
                 <TextInputView style={[t.mL5]}>
-                    <STextInput  selectable={true}>{id}</STextInput>
+                    <STextInput defaultValue={id} onChangeText={changeText.bind(null, "wifi_name")}/>
                 </TextInputView>
             </RowView>
             <RowView style={[t.mT1, t.flexRow, t.itemsCenter]}>
                 <Icon name={"lock1"} color={'#000'} size={30}/>
                 <TextInputView style={[t.mL5]}>
-                    <STextInput selectable={true}>{pw}</STextInput>
+                    <STextInput defaultValue={pw} onChangeText={changeText.bind(null, "wifi_pw")}>{pw}</STextInput>
                 </TextInputView>
             </RowView>
         </View>
