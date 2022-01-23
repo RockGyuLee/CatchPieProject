@@ -52,7 +52,6 @@ function DetectModal({texts, disableModal, image, closeAllModal}){
     }
 
     const changeText = (idx, text) => {
-        console.log("text",text);
         setDetectTexts( (data)=> data.map( (t, iidx) => iidx == idx ? text : t) )
     }
 

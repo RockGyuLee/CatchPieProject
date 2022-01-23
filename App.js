@@ -10,6 +10,7 @@ import { PermissionsAndroid } from "react-native"
 import MainView from './src/Main';
 import { CirecleBtn, DefaultBtn } from './src/components/Button';
 import ImageModal from './src/components/modal/ImageModal';
+import WifiInfoCard from './src/components/WifiInfoCard';
 
 SQLite.DEBUG(true);
 
@@ -19,6 +20,7 @@ export default function App() {
   const [ isUpdateState, setIsUpdateState] = useState(-1);
 
   const [data, setData] = useState(null);
+  
   PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
 
   useLayoutEffect(()=>{
@@ -29,7 +31,7 @@ export default function App() {
           })
       })
       return ()=>{
-          db.close()
+          db.close();
       }
   }, [ isUpdateState])
 
@@ -49,8 +51,9 @@ export default function App() {
   console.log(isModalVisible,isUpdateState)
 
   return (
-    <SafeAreaView key={Math.random()} style={styles.container}>
-      { data && <MainView updateCard={isUpdateState} data={data} update2Data={update2Data}/>}
+    <SafeAreaView key={Math.random()}  style={styles.container}>
+      {/* { data && <MainView updateCard={isUpdateState} data={data} update2Data={update2Data}/>} */}
+      { data && <WifiInfoCard updateCard={isUpdateState} data={data} update2Data={update2Data} />}
       <CirecleBtn  onPress={toggleModal}>
         <Icon name="plus" color="white" size={25}/>
       </CirecleBtn>

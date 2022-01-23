@@ -92,9 +92,9 @@ function MView({ data, update2Data, idx, ...props}){
           })}} onPress={changeCardState} onLongPress={onPressLong}>
                 <Header title={title}/>
                 <InfoText id={wifiName} pw={wifiPw}/>
-                    <RigthIcon key={Math.random()} name={
-                        isOpenCard ? "keyboard-arrow-up" : "keyboard-arrow-down"
-                    } size={24} />
+                <RigthIcon key={Math.random()} name={
+                    isOpenCard ? "keyboard-arrow-up" : "keyboard-arrow-down"
+                } size={24} />
                 <Animated.View style={{ marginTop : '5%', opacity : fadeAnim, display : 'flex',alignItems : 'center', justifyContent : 'center'}}>
                     <QRCode value={`WIFI:S:${wifiName};T:WPA;P:${wifiPw};;`} size={80}/>
                 </Animated.View>

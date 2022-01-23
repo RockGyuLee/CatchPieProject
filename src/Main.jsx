@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native';
 //modules
 import MView from './components/View';
 import UpdateCard from "./components/UpdateCard";
+import WifiInfoCard from './components/WifiInfoCard';
 
 
 function MainView(props){
